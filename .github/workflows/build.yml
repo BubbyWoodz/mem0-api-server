@@ -26,10 +26,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push (linux/amd64)
+      - name: Build and push (linux/amd64, no cache)
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           platforms: linux/amd64
+          no-cache: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
